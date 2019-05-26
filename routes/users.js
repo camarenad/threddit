@@ -3,11 +3,9 @@ var router = express.Router();
 var userCtrl = require('../controllers/users')
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.get('/users',userCtrl.index)
 
-router.post('/',userCtrl.createUser);
+// router.post('/',userCtrl.createUser);
 
 
 
