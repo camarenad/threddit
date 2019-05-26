@@ -7,18 +7,14 @@ a {
   color: #00B7FF;
 }
 
-form button {
-  display: iblock;
-  margin: 0 auto;
-}
-
 nav {
   background-color: #FCFFF5;
 }
 
 nav ul li a{
   color: black;
-  text-decoration:none;
+  display: inline;
+
 }
 
 #header {
