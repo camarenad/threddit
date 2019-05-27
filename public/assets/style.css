@@ -14,9 +14,19 @@ nav {
 nav ul li a{
   color: black;
   display: inline-block;
-
+  font-family: 'Oswald'
 }
 
 #header {
   color:#F24607;
 }
+
+.form-wrapper {
+  height: 80vh;
+}
+.post-header {
+  font-family: 'Oswald';
+  margin: 10vmin;
+  padding: 10vmin;
+}
+
