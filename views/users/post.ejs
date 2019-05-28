@@ -3,25 +3,25 @@
   <div class="form-wrapper">
   <h3 class='center post-header'>Speak your mind. <br><br> <%= user.user%></h3>
   <div class="row post-form">
-    <form class="col s12">
+    <form class="col s12" method="POST" action="/users">
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Enter a headline" id="first_name" type="text" class="validate">
+          <input placeholder="Enter a headline" id="headline" name="headline" type="text" class="validate">
           <label for="Enter A headline..">Headline</label>
         </div>
       </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea1" class="materialize-textarea"></textarea>
+            <textarea id="textarea1" class="materialize-textarea" name="content"></textarea>
             <label for="textarea1">content</label>
           </div>
       </div>
+      <div class="center">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
     </form>
-  <div class="center">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-      <i class="material-icons right">send</i>
-    </button>
-  </div>
   </div>
 </div>
