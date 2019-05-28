@@ -42,7 +42,7 @@ function index(req, res, next) {
   // Default to sorting by name
   let sortKey = req.query.sort || 'name';
   User.find(modelQuery)
-  .sort(sortKey).exec(function(err, users) {
+  .sort(sortKey).populate('posts').exec(function(err, users) {
     if (err) return next(err);
     // Passing search values, name & sortKey, for use in the EJS
     res.render('users/index', {
@@ -52,6 +52,5 @@ function index(req, res, next) {
       sortKey
     });
   });
-  // console.log(req.user)
 }
 
