@@ -5,8 +5,8 @@ var postSchema = new Schema({
     headline: String,
     content: String,
     date: Date,
-    comment: [{type: Type.Schema.ObjectId, ref:'Comment'}],
-    user: {type: Type.Schema.ObjectId, ref:'User'}
+    comment: [{type: Schema.Types.ObjectId, ref:'Comment'}],
+    user: {type: Schema.Types.ObjectId, ref:'User'}
 }, {
     timestamps: true
 })
