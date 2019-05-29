@@ -4,16 +4,14 @@ var userCtrl = require('../controllers/users')
 
 /* GET users listing. */
 router.get('/',userCtrl.index)
-
+router.get('/profile/:id', userCtrl.profile)
 router.post('/post', userCtrl.addPost)
-
 router.get('/post',userCtrl.post,isLoggedIn,userCtrl.post)
+
 
 function isLoggedIn(req, res, next) {
     if ( req.isAuthenticated() ) return next();
     res.redirect('/auth/google');
   }
   
-  
-
 module.exports = router;

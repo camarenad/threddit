@@ -21,8 +21,8 @@
           <ul class="right">
               <li>
               <% if (user) { %>
-               <a href="/logout">Profile</a>
-               <a href="/logout">View</a>
+               <a href="/users/profile/<%= user._id %>">Profile</a>
+               <a href="/users">View</a>
                <a href="/users/post">Create</a>
                 <a href="/logout">Log Out</a>
               <% } else { %>
