@@ -8,21 +8,22 @@ module.exports = {
     profile
 }
 
-
-function profile(req,res,next) {
-  User.findById(req.params.id, function(err,user){
-    res.render('users/profile',{user:user})
-  });
- }
- 
- 
+function profile(req, res, next) {
+    User.findById(req.params.id, function(err, user) {
+        res.render('users/profile', {
+            user: user
+        })
+    }).populate('posts').exec((err, posts) => {
+        return
+    });
+}
 
 function addPost(req, res, next) {
     Post.create(req.body, function(err, post) {
         post.user = req.user._id
         post.save(function(err) {
             User.findById(req.user._id, function(err, user) {
-                user.posts.push(post);
+                user.posts.unshift(post);
                 user.save(function(err) {
                     res.redirect('/users')
                 });
@@ -38,7 +39,6 @@ function post(req, res, next) {
     });
     // console.log('DESIRED ROUTE PARAM'+ req.user)
 }
-
 
 function index(req, res, next) {
     // Make the query object to use with User.find based up
