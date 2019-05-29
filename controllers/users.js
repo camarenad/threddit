@@ -7,16 +7,34 @@ module.exports = {
     addPost,
     profile,
     delPost,
-    update
+    show,
+    updatePost
 }
 
+function updatePost(req,res,next) {
+    Post.findById(req.params.id, function(err,post) {
+        post.content = req.body.content;
+        post.save(function(err2,post) {
+            if(err2){ 
+                console.log(err2);
+            }
+            res.redirect(`/users/profile/${req.user.id}`);
+        })
+    });
+//     console.log(req.params, req.body)
+//   Post.findByIdAndUpdate({id: req.params.id}, {content: req.body.content},{new: true},
+//     function(err,post) {
+//         res.redirect(`/users/profile/${req.user.id}`);
+//     })
+// //   }) 
+}
 
-function update(req,res,next) {
+function show(req,res,next) {
     User.find(req.user.id)
     .populate('posts').exec(function(err, user){
         Post.findById(req.params.id, function(err,post) {
             res.render('users/edit', {
-                post: post.content,
+                post: post,
                 user: req.user
             });
         });

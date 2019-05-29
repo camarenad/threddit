@@ -8,7 +8,8 @@ router.get('/profile/:id', userCtrl.profile)
 router.post('/post', userCtrl.addPost)
 router.get('/post',userCtrl.post,isLoggedIn,userCtrl.post)
 router.delete('/profile/:id', userCtrl.delPost )
-router.get('/edit/:id',userCtrl.update)
+router.get('/edit/:id',userCtrl.show)
+router.put('/edit/:id',userCtrl.updatePost)
 
 
 function isLoggedIn(req, res, next) {

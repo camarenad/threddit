@@ -1,16 +1,21 @@
 <%- include('../partials/header') %>
-<h2 class="header"><%= user.user %></h2>
-  <div class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
-        <img src="https://lorempixel.com/100/190/nature/6">
-      </div>
-          <input value="<%= post %>" type="text">
+<form action="/users/edit/<%= post._id %>?_method=PUT" method="POST">
+        <h2 class="header"><%= user.user %></h2>
+        <div class="col s12 m7">
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="https://lorempixel.com/100/190/nature/6">
+            </div>
+                <input value="<%= post.content %>" type="text" name='content'>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <br>
+        <div class="center">
+              <input type="submit" name="" id="" class="btn-small">
+        </div>
+        <br>
+</form>
 
 
   
