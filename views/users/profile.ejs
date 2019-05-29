@@ -11,8 +11,9 @@
           <p><%= post.content %></p>
         </div>
         <div class="card-action">
-          <a href="#">Edit</a>
-          <a href="/users/profile/<%= post._id %>">Delete</a>
+          <form action="/users/profile/<%= post._id %>?_method=DELETE" method="POST" class="secondary-content">
+            <button type="submit" class="btn-small">Delete</button>
+          </form>
         </div>
       </div>
     </div>

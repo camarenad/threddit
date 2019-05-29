@@ -5,18 +5,38 @@ module.exports = {
     index,
     post,
     addPost,
-    profile
+    profile,
+    delPost
 }
+
+
+function delPost(req,res,next) {
+    Post.findByIdAndDelete(req.params.id, function(err,post) {
+        res.redirect('/users/profile/:id');
+    });
+}
+
+
+// function delPost(res,req,next) {
+//     console.log(req.params.id);
+//     User.findOne({'posts': req.params.id }, function(err,user){
+//         user.posts.id(req.params.id).remove();
+//         user.save(function(err) {
+//             res.redirect('/users')
+//         });
+//     });
+// }
 
 function profile(req, res, next) {
     User.findById(req.user._id)
     .populate('posts').exec(function(err, user) {
     Post.find({_id: {$in: user.posts}})
     .exec(function(err, posts) {
-      console.log(posts);
+    //   console.log(posts);
       res.render('users/profile', {
           user, posts
       });
+      console.log(req.params.id)
     });
   });
 }
