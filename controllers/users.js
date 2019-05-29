@@ -6,9 +6,25 @@ module.exports = {
     post,
     addPost,
     profile,
-    delPost
+    delPost,
+    update
 }
 
+
+function update(req,res,next) {
+    User.find(req.user.id)
+    .populate('posts').exec(function(err, user){
+        Post.findById(req.params.id, function(err,post) {
+            res.render('users/edit', {
+                post: post.content,
+                user: req.user
+            });
+        });
+    });
+   
+    console.log(req.user._id)
+    console.log(req.params.id)
+}
 
 function delPost(req,res,next) {
     Post.findByIdAndDelete(req.params.id, function(err,post) {

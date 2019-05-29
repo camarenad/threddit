@@ -11,7 +11,7 @@
           <p><%= post.content %></p>
         </div>
         <div class="card-action">
-          <a onclick="showFunc()" href="#">Edit</a>
+          <a href="/users/edit/<%= post._id %>">Edit</a>
           <form action="/users/profile/<%= post._id %>?_method=DELETE" method="POST" class="secondary-content">
             <button type="submit" class="btn-small">Delete</button>
           </form>
@@ -20,24 +20,5 @@
     </div>
   </div>
   <br>
-  <form action="" id='editForm' style="display:none">
-    <h1 class="center">Edit Post</h1>
-      <input type="text">
-      <div class="center">
-        <br>
-          <input type="submit" class="btn-small">
-      </div>
-    </form>
 <% }) %>
-
-<script>
-function showFunc() {
-  var x = document.getElementById("editForm");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
 
