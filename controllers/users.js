@@ -9,13 +9,16 @@ module.exports = {
 }
 
 function profile(req, res, next) {
-    User.findById(req.params.id, function(err, user) {
-        res.render('users/profile', {
-            user: user
-        })
-    }).populate('posts').exec((err, posts) => {
-        return
+    User.findById(req.user._id)
+    .populate('posts').exec(function(err, user) {
+    Post.find({_id: {$in: user.posts}})
+    .exec(function(err, posts) {
+      console.log(posts);
+      res.render('users/profile', {
+          user, posts
+      });
     });
+  });
 }
 
 function addPost(req, res, next) {
