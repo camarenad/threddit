@@ -1,6 +1,9 @@
 <%- include('../partials/header') %>
 <% users.forEach(function(user) { %>
-<h2 class="header"><%= user.user %></h2>
+ <% if (user.posts.length != 0) { %>
+      <h2><%= user.user %></h2>
+      <h5><%= user.createdAt %></h5>
+<% } %>
 <% user.posts.forEach(function(post) { %>
 <div class="col s12 m7">
    <div class="card horizontal">
@@ -9,10 +12,11 @@
       </div>
       <div class="card-stacked">
          <div class="card-content">
+            <p class=bold><%= post.headline %><p>
             <p><%= post.content %></p>
          </div>
          <div class="card-action">
-            <a href="#">Comment</a>
+            <a href="/users/post/<%= post._id %>">View Post</a>
          </div>
       </div>
    </div>

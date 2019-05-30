@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+<h2><%= user.user %></h2>
+<h5><%= post.createdAt %></h5>
+<div class="wrapper">
+   <div class="col s12 m7">
+      <div class="card horizontal">
+         <div class="card-image">
+            <img src="https://lorempixel.com/100/190/nature/6">
+         </div>
+         <div class="card-stacked">
+            <div class="card-content">
+               <p class=bold><%= post.headline %>
+               <p>
+               <p><%= post.content %></p>
+            </div>
+            <div class="card-action">
+            </div>
+         </div>
+      </div>
+   </div>
+   <form action="/users/comment/<%= post._id %>" method="POST">
+      <div class="center">
+         <input type="text" placeholder="Leave a comment" name="content">
+         <input type="submit" class="btn-small">
+      </div>
+   </form>
+   <% post.comments.forEach(function(comment){ %>          
+   <div class="col s12 m7">
+      <div class="card horizontal">
+         <div class="card-image">
+            <img src="https://lorempixel.com/100/190/nature/6">
+         </div>
+         <div class="card-stacked">
+            <div class="card-content">
+                <h5><%= user.user%></h5>
+               <p><%= comment.content %></p>
+            </div>
+            <div class="card-action">
+            </div>
+         </div>
+      </div>
+   </div>
+   <% }); %>
+</div>
+
+

@@ -1,5 +1,6 @@
 var User = require('../models/user');
 var Post = require('../models/post');
+var Comment = require('../models/comment')
 
 module.exports = {
     index,
@@ -8,7 +9,34 @@ module.exports = {
     profile,
     delPost,
     show,
-    updatePost
+    updatePost,
+    showComments,
+    newComment
+}
+
+function newComment(req,res,next){
+    var comment = new Comment(req.body)
+    comment.save(function(err) {
+        Post.findById(req.params.id, function(err,post){
+            post.comments.unshift(comment);
+            post.save(function(err){
+                res.redirect(`back`)
+            });
+        });
+
+    })
+}
+
+function showComments(req,res,next) {
+    Post.findById(req.params.id)
+    .populate('comments')
+    .populate('user')
+    .exec(function(err,post){
+        res.render('users/comment',{
+            post: post,
+            user: req.user
+        });
+    });
 }
 
 function updatePost(req,res,next) {
@@ -21,17 +49,12 @@ function updatePost(req,res,next) {
             res.redirect(`/users/profile/${req.user.id}`);
         })
     });
-//     console.log(req.params, req.body)
-//   Post.findByIdAndUpdate({id: req.params.id}, {content: req.body.content},{new: true},
-//     function(err,post) {
-//         res.redirect(`/users/profile/${req.user.id}`);
-//     })
-// //   }) 
 }
 
 function show(req,res,next) {
     User.find(req.user.id)
-    .populate('posts').exec(function(err, user){
+    .populate('posts')
+    .exec(function(err, user){
         Post.findById(req.params.id, function(err,post) {
             res.render('users/edit', {
                 post: post,
