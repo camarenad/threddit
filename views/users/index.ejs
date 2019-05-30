@@ -1,22 +1,25 @@
 <%- include('../partials/header') %>
+<h1 class="center">Latest Posts:</h1>
 <% users.forEach(function(user) { %>
- <% if (user.posts.length != 0) { %>
-      <h2><%= user.user %></h2>
-      <h5><%= user.createdAt %></h5>
-<% } %>
 <% user.posts.forEach(function(post) { %>
 <div class="col s12 m7">
    <div class="card horizontal">
       <div class="card-image">
-         <img src="https://lorempixel.com/100/190/nature/6">
+         <!-- <img class="responsive-img" src="https://lorempixel.com/100/190/nature/6"> -->
       </div>
       <div class="card-stacked">
          <div class="card-content">
-            <p class=bold><%= post.headline %><p>
+               <% if (user.posts.length != 0) { %>
+                  <h2><%= user.user %></h2>
+                  <% if(post.createdAt){%>
+                     <h5><%= user.createdAt.toLocaleString() %></h5>
+                  <% } %>
+            <% } %>
+            <p class="post-headline"><%= post.headline %><p>
             <p><%= post.content %></p>
          </div>
          <div class="card-action">
-            <a href="/users/post/<%= post._id %>">View Post</a>
+            <a class="accent" href="/users/post/<%= post._id %>">View Post</a>
          </div>
       </div>
    </div>

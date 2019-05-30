@@ -23,7 +23,6 @@ function newComment(req,res,next){
                 res.redirect(`back`)
             });
         });
-
     })
 }
 
@@ -34,7 +33,7 @@ function showComments(req,res,next) {
     .exec(function(err,post){
         res.render('users/comment',{
             post: post,
-            user: req.user
+            user: post.user
         });
     });
 }

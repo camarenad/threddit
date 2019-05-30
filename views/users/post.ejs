@@ -1,27 +1,30 @@
 
-  <%- include('../partials/header') %>
-  <div class="form-wrapper">
-  <h3 class='center post-header'>Speak your mind. <br><br> <%= user.user%></h3>
-  <div class="row post-form">
-    <form class="col s12" method="POST" action="/users/post">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Enter a headline" id="headline" name="headline" type="text" class="validate">
-          <label for="Enter A headline..">Headline</label>
-        </div>
-      </div>
+<%- include('../partials/header') %>
+<div class="form-wrapper container">
+  <h2 class='center post-header'>Speak your mind. <br><br> <%= user.user%></h2>
+    <div class="col s12">
+      <form class="" method="POST" action="/users/post">
+        <div class="row">
+          <div class="input-field">
+            <input placeholder="Enter a headline" id="headline" name="headline" type="text" class="validate">
+            <label for="Enter A headline..">Headline</label>
+          </div>
         </div>
         <div class="row">
-          <div class="input-field col s12">
+          <div class="input-field">
             <textarea id="textarea1" class="materialize-textarea" name="content"></textarea>
             <label for="textarea1">content</label>
           </div>
-      </div>
-      <div class="center">
-        <button class="btn waves-effect waves-light" type="submit">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </div>
-    </form>
+          <div class="center">
+              <button class="btn waves-effect waves-light" type="submit">Submit
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+        </div>
+      </form>
+    </div>  
   </div>
 </div>
+
+
+

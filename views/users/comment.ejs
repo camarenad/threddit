@@ -1,16 +1,19 @@
 <%- include('../partials/header') %>
-<h2><%= user.user %></h2>
-<h5><%= post.createdAt %></h5>
 <div class="wrapper">
+    <h1 class="center">Post</h1>
+    <h2 class="center">Leave a response</h2>
    <div class="col s12 m7">
       <div class="card horizontal">
          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6">
+            <!-- <img src="https://lorempixel.com/100/190/nature/6"> -->
          </div>
          <div class="card-stacked">
             <div class="card-content">
-               <p class=bold><%= post.headline %>
-               <p>
+               <h2><%= user.user %></h2>
+              <% if(post.createdAt){%>
+                <h5><%= user.createdAt.toLocaleString() %></h5>
+             <% } %>
+               <p class="post-headline"><%= post.headline %>
                <p><%= post.content %></p>
             </div>
             <div class="card-action">
@@ -28,11 +31,13 @@
    <div class="col s12 m7">
       <div class="card horizontal">
          <div class="card-image">
-            <img src="https://lorempixel.com/100/190/nature/6">
+            <!-- <img src="https://lorempixel.com/100/190/nature/6"> -->
          </div>
          <div class="card-stacked">
             <div class="card-content">
-                <h5><%= user.user%></h5>
+               <% if (user.posts.length != 0) { %>
+               <h2><%= user.user %></h2>
+               <% } %>
                <p><%= comment.content %></p>
             </div>
             <div class="card-action">
@@ -42,5 +47,3 @@
    </div>
    <% }); %>
 </div>
-
-
